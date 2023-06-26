@@ -17,7 +17,18 @@ else Console.WriteLine($"Оба числа равны {a}.");
  2, 3, 7 -> 7
  44 5 78 -> 78
  22 3 9 -> 22 */
-
+Console.WriteLine("Задача 4. Сравнение трёх целых чисел.");
+Console.Write("Введите число a: ");
+int a = Convert.ToInt16(Console.ReadLine());
+Console.Write("Введите число b: ");
+int b = Convert.ToInt16(Console.ReadLine());
+Console.Write("Введите число c: ");
+int c = Convert.ToInt16(Console.ReadLine());
+Console.WriteLine($"Введённые числа: {a}, {b}, {c}");
+int max = a;
+if (max < b) max = b;
+if (max < c) max = c;
+Console.WriteLine($"Наибольшее число равно {max}.");
 /* Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
  4 -> да
  -3 -> нет
