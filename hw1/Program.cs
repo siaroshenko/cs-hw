@@ -4,9 +4,15 @@ Console.WriteLine("Hello, World!");
  a = 5; b = 7 -> max = 7
  a = 2 b = 10 -> max = 10
  a = -9 b = -3 -> max = -3 */
-int a = Console.ReadLine();
-int b = Console.ReadLine();
-Console.WriteLine(a);
+Console.WriteLine("Задача 2. Сравнение двух целых чисел.");
+Console.Write("Введите число a: ");
+int a = Convert.ToInt16(Console.ReadLine());
+Console.Write("Введите число b: ");
+int b = Convert.ToInt16(Console.ReadLine());
+Console.WriteLine($"Введённые числа: {a}, {b}");
+if (a > b) Console.WriteLine($"Наибольшее число - а = {a}.");
+else if (a < b) Console.WriteLine($"Наибольшее число - b = {b}.");
+else Console.WriteLine($"Оба числа равны {a}.");
 /* Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
  2, 3, 7 -> 7
  44 5 78 -> 78
