@@ -34,7 +34,7 @@ class HelloWorld {
             int.TryParse(inpNum, out check);
             if (inpNum.Length != 1 || (check < 1 || check > 7)) Console.Write("Вы ввели число вне диапазона. Введите число от 1 до 7 включительно: ");
             else {
-                if (check > 6) Console.Write($"Число {check} соответствует выходному дню.");
+                if (check > 5) Console.Write($"Число {check} соответствует выходному дню.");
                 else Console.Write($"Число {check} соответствует буднему дню.");
                 break;
             }
