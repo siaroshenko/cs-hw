@@ -67,7 +67,7 @@ class homework
     static string Input(string text)
     {
         Console.Write(text);
-        string inpTemp; //не понимаю, зачем ему тут этот 0 :/ типа и так все работает, а он требует зачем-то вопросик ставить...
+        string inpTemp;
         while (true)
         {
             inpTemp = Console.ReadLine();
