@@ -29,7 +29,7 @@ class homework
 
         //Для любых строк
         Console.Write("Введите строку: ");
-        string str = Console.ReadLine();
+        string? str = Console.ReadLine();
         bool check = true;
         for (int i = 0; i < str.Length / 2; i++)
         {
@@ -67,7 +67,7 @@ class homework
     static string Input(string text)
     {
         Console.Write(text);
-        string inpTemp;
+        string? inpTemp;
         while (true)
         {
             inpTemp = Console.ReadLine();
