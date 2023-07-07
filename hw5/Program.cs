@@ -33,7 +33,7 @@
         Console.WriteLine($"Массив: {string.Join("; ", arr)}");
         return arr;
     }
-    /*static int[] RandomArray(int Length) - здесь заполняется огромными числами из-за отсутствия границ :/ зачем, спрашивается, в перегрузку полезла?
+    /*static int[] RandomArray(int Length) //здесь заполняется огромными числами из-за отсутствия границ :/ зачем, спрашивается, в перегрузку полезла?
     {
         Random rand = new Random();
         int[] arr = new int[Length];
@@ -61,6 +61,7 @@
         {
             arr[i] = InputNumber($"Введите элемент {i} массива: ");
         }
+        Console.Clear();
         Console.WriteLine($"Ваш массив: [{string.Join("; ", arr)}]");
         return arr;
     }
@@ -72,7 +73,6 @@
             if (arr[i] > arr[maxIndex]) maxIndex = i;
             if (arr[i] < arr[minIndex]) minIndex = i;
         }
-        Console.WriteLine($"{minIndex}, {maxIndex}");
         return arr[maxIndex] - arr[minIndex];
     }
     static void Main()
@@ -86,11 +86,14 @@
         // [3, 7, 23, 12] -> 19
         // [-4, -6, 89, 6] -> 0
         Console.WriteLine("Задача 36: Найти сумму нечётных элементов в массиве.");
-        //Console.WriteLine($"Сумма нечётных элементов массива: {SumOfOddElems(RandomArray(Positive("Введите размер массива: ")))}\n");
-        Console.WriteLine($"Сумма нечётных элементов массива: {SumOfOddElems(InputRealArray(Positive("Введите размер массива: ")))}\n");
+        // Console.WriteLine($"Сумма нечётных элементов массива: {SumOfOddElems(RandomArray(Positive("Введите размер массива: ")))}\n"); 
+        // если не поверили, что там большие цифры получаются, - можете проверить, но надо будет поменять параметр в функции с массива даблов 
+        // на массив интов и закомментировать следующую строчку :р
+        Console.WriteLine($"Сумма нечётных элементов массива: {SumOfOddElems(InputRealArray(Positive("Введите размер массива: ")))}\n"); //с маленькими числами всё работает
 
         // // Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
         // // [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
+        Console.WriteLine("Задача 38: Найти разницу между максимальным и минимальным элементов массива.");
         Console.WriteLine($"Разница между максимальным и минимальным элементами: {DiffMaxMin(InputRealArray(Positive("Введите размер массива: ")))}");
     }
 }
