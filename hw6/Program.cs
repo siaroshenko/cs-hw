@@ -14,7 +14,7 @@ double b1 = InputNumber("Введите b1: ");
 double k2 = InputNumber("Введите k2: ");
 double b2 = InputNumber("Введите b2: ");
 Console.WriteLine($"Полученные уравнения:\n\ty = {k1} * x + {b1}\n\ty = {k2} * x + {b2}");
-Console.WriteLine($"Точка пересечения прямых: А({Math.Round((b2 - b1) / (k1 - k2), 3)}; {Math.Round(k1 * (b2 - b1) / (k1 - k2) + b1, 4)})\n");
+Console.WriteLine($"Точка пересечения прямых: А({Math.Round((b2 - b1) / (k1 - k2), 3)}; {Math.Round(k1 * (b2 - b1) / (k1 - k2) + b1, 3)})\n");
 
 //пауза
 void Pause()
