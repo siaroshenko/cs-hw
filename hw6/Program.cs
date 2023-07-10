@@ -9,7 +9,6 @@ Pause();
 // b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
 // k1 * x + b1 = k2 * x + b2 => x = (b2 - b1) / (k1 - k2)
 // y = k1 * x + b1
-double x, y;
 double k1 = InputNumber("Введите k1: ");
 double b1 = InputNumber("Введите b1: ");
 double k2 = InputNumber("Введите k2: ");
