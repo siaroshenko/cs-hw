@@ -85,15 +85,25 @@
     }
 
     //функция для поиска строки с наименьшей суммой элементов
-    static int LiestSumRow(double[,] arr)
+    static int LeastSumRow(double[,] arr)
     {
         int rows = 0, col = 0;
+        double sum1, sum2;
         MatrixSize(ref rows, ref col, arr);
         int rowNum = 0;
-        for (int i = 0; i < rows-1; i++){
-            for(int j = 0; j< col; j++)
+        for (int i = 1; i < rows - 1; i++)
+        {
+            sum1 = sum2 = 0;
+            for (int j = 0; j < col; j++)
+            {
+                sum1 += arr[j, rowNum];
+                sum2 += arr[j, i];
+            }
+            if (sum1 > sum2) rowNum = i;
         }
-     }
+        Console.WriteLine($"Номер строки с наименьшей суммой элементов: {rowNum + 1}");
+        return rowNum + 1;
+    }
 
     static void Main()
     {
@@ -107,7 +117,7 @@
         9 5 3 2
         8 4 4 2*/
         double[,] arr = InputReal2DArray(Positive("Введите количество строк: "), Positive("Введите количество элементов в строке: "));
-        SortByRows(ref arr);
+        //SortByRows(ref arr);
 
         /*Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
         Например, задан массив:
@@ -116,7 +126,7 @@
         8 4 2 4
         5 2 6 7
         Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка*/
-
+        //LeastSumRow(arr);
 
         /*Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
         Например, даны 2 матрицы:
