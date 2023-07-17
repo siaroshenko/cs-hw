@@ -72,8 +72,8 @@
     //функция для расчёта среднего арифметического в столбце
     static double[] AvgByColumn(double[,] arr)
     {
-        int rows = arr.GetUpperBound(0) + 1;
-        int col = arr.Length / rows;
+        int col = arr.GetUpperBound(0) + 1;
+        int rows = arr.Length / col;
         double[] buffArr = new double[col];
         for (int i = 0; i < col; i++)
         {
