@@ -1,5 +1,4 @@
-using System;
-class hw7
+﻿class hw7
 {
     //функция для ввода вещественного числа
     static double InputNumber(string text)
@@ -78,10 +77,10 @@ class hw7
         for (int i = 0; i < col; i++)
         {
             double sum = 0;
-            for (int j = 0; j < rows; i++) sum += arr[i, j];
+            for (int j = 0; j < rows; j++) sum += arr[i, j];
             buffArr[i] = sum / rows;
         }
-        Console.WriteLine($"Среднее арифметическое каждого столбца: {string.Join(";", buffArr)}.");
+        Console.WriteLine($"Среднее арифметическое каждого столбца: {string.Join("; ", buffArr)}.");
         return buffArr;
     }
 
@@ -100,7 +99,7 @@ class hw7
         5 9 2 3
         8 4 2 4
         17 -> такого числа в массиве нет*/
-        //ElementByIndex(arr, Positive("Введите номер строки: ") - 1, Positive("Введите номер столбца: ") - 1);
+        ElementByIndex(arr, Positive("Введите номер строки: ") - 1, Positive("Введите номер столбца: ") - 1);
         
         /*Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
         Например, задан массив:
