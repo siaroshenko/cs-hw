@@ -40,15 +40,7 @@
             }
         }
         Console.Clear();
-        Console.WriteLine("Ваш массив: ");
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < col; j++)
-            {
-                Console.Write($"{arr[j, i]}\t");
-            }
-            Console.WriteLine();
-        }
+        PrintMatrix("Ваш массив: ", arr);
         return arr;
     }
 
@@ -64,7 +56,6 @@
     {
         int rows = 0, col = 0;
         MatrixSize(ref rows, ref col, arr);
-        Console.WriteLine("\nОтсортированный массив:");
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < col - 1; j++)
@@ -79,9 +70,8 @@
                     }
                 }
             }
-            for (int j = 0; j < col; j++) Console.Write($"{arr[j, i]}\t");
-            Console.WriteLine();
         }
+        PrintMatrix("\nОтсортированный массив:", arr);
     }
 
     //функция для поиска строки с наименьшей суммой элементов
@@ -105,6 +95,49 @@
         return rowNum + 1;
     }
 
+    //функция печати матрицы
+    static void PrintMatrix(string text, double[,] arr)
+    {
+        int rows = 0, col = 0;
+        MatrixSize(ref rows, ref col, arr);
+        Console.WriteLine($"{text}");
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < col; j++) Console.Write($"{arr[j, i]}\t");
+            Console.WriteLine();
+        }
+    }
+
+    //функция проверки совместимости матриц
+    static bool MatrixCompatibilityCheck(double[,] matrixA, double[,] matrixB)
+    {
+        int rowsA = 0, colA = 0, rowsB = 0, colB = 0;
+        MatrixSize(ref rowsA, ref colA, matrixA);
+        MatrixSize(ref rowsB, ref colB, matrixB);
+        if (colA == rowsB) return true;
+        else return false;
+    }
+
+    //функция перемножения матриц
+    static double[,] MatrixMultiplication(double[,] matrixA, double[,] matrixB)
+    {
+        int rowsA = 0, colA = 0, rowsB = 0, colB = 0;
+        MatrixSize(ref rowsA, ref colA, matrixA);
+        MatrixSize(ref rowsB, ref colB, matrixB);
+        double[,] matrixResult = new double[colB, rowsA];
+        if (MatrixCompatibilityCheck(matrixA, matrixB) == false)
+        {
+            Console.WriteLine("Матрицы не могут быть перемножены!");
+            return matrixResult;
+        }
+        for (int j = 0; j < rowsA; j++)
+            for (int k = 0; k < colB; k++)
+                for (int i = 0; i < colA; i++)
+                    matrixResult[k, j] += matrixA[i, j] * matrixB[k, i];
+        PrintMatrix("Результирующая матрица:", matrixResult);
+        return matrixResult;
+    }
+
     static void Main()
     {
         /*Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
@@ -116,7 +149,7 @@
         7 4 2 1
         9 5 3 2
         8 4 4 2*/
-        double[,] arr = InputReal2DArray(Positive("Введите количество строк: "), Positive("Введите количество элементов в строке: "));
+        //double[,] arr = InputReal2DArray(Positive("Введите количество строк: "), Positive("Введите количество элементов в строке: "));
         //SortByRows(ref arr);
 
         /*Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
@@ -135,6 +168,8 @@
         Результирующая матрица будет:
         18 20
         15 18*/
+        //MatrixMultiplication(InputReal2DArray(Positive("Введите количество строк для матрицы А: "), Positive("Введите количество столбцов для матрицы A: ")),
+        //                    InputReal2DArray(Positive("Введите количество строк для матрицы B: "), Positive("Введите количество столбцов для матрицы B: ")));
 
         /*Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
         Массив размером 2 x 2 x 2
