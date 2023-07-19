@@ -1,12 +1,10 @@
-﻿using System;
-
-class hw8
+﻿class hw8
 {
     // функция для ввода вещественного числа
     static double InputNumber(string text)
     {
         Console.Write(text);
-        string inpTemp;
+        string? inpTemp;
         while (true)
         {
             inpTemp = Console.ReadLine();
@@ -147,7 +145,7 @@ class hw8
         double[,] arr = new double[4, 4];
         // М мы используем для рассчётов по вертикали (т.е. оно должно быть равным количеству строк)
         // N - для рассчётов по горизонтали (т.е. оно равно количеству столбцов)
-        int rows = 4, col = 4, M = 4, N = 4; 
+        int rows = 4, col = 4, M = 4, N = 4;
         int i = 0, j = 0;
         for (int step = 0; step < 8; step++)
         // количество шагов зависит от количества узлов. Например, в спирали матрицы 4х4 у нас 6 углов и ещё начало и конец => получаем 8 узлов
@@ -199,49 +197,55 @@ class hw8
         PrintMatrix("Массив, заполненный по спирали: ", arr);
         return arr;
     }
-    
+
     // функция для проверки элемента на уникальность
-    static bool ElemCheck(int[,,] arr, int elem){
+    static bool ElemCheck(int[,,] arr, int elem)
+    {
         int d1 = arr.GetLength(0);
         int d2 = arr.GetLength(1);
         int d3 = arr.GetLength(2);
         int count = 0;
         for (int i = 0; i < d1; i++)
-        for (int j = 0; j < d2; j++)
-        for (int k = 0; k < d3; k++){
-            if (arr[i, j, k] == elem) count++;
-            if (count > 1) return false;
-        }
+            for (int j = 0; j < d2; j++)
+                for (int k = 0; k < d3; k++)
+                {
+                    if (arr[i, j, k] == elem) count++;
+                    if (count > 1) return false;
+                }
         return true;
     }
 
     // функция для заполнения 3-хмерного массива
-    static int[,,] Random3DArray(int height, int length, int width){
+    static int[,,] Random3DArray(int height, int length, int width)
+    {
         int[,,] arr = new int[height, length, width];
         Random rand = new Random();
-        for(int i = 0; i < height; i++)
-            for(int j = 0; j < length; j++)
+        for (int i = 0; i < height; i++)
+            for (int j = 0; j < length; j++)
             {
                 int k = 0;
-                while(k < width)
+                while (k < width)
                 {
-                    arr[i, j, k] = rand.Next(10,100);
+                    arr[i, j, k] = rand.Next(10, 100);
                     if (ElemCheck(arr, arr[i, j, k])) k++;
                 }
             }
         return arr;
     }
-    
+
     // функция для построчного вывода 3-мерного массива с указанием индексов
-    static void Print3DArrayByRows(int[,,] arr){
+    static void Print3DArrayByRows(int[,,] arr)
+    {
         int d1 = arr.GetLength(0);
         int d2 = arr.GetLength(1);
         int d3 = arr.GetLength(2);
         Console.WriteLine("\nПолученный массив: ");
-        for(int k = 0; k < d3; k++){
-            for(int i = 0; i < d1; i++){
-                for(int j = 0; j < d2; j++)
-                Console.Write($"{arr[i, j, k]} ({i}, {j}, {k})\t");
+        for (int k = 0; k < d3; k++)
+        {
+            for (int i = 0; i < d1; i++)
+            {
+                for (int j = 0; j < d2; j++)
+                    Console.Write($"{arr[i, j, k]} ({i}, {j}, {k})\t");
                 Console.WriteLine();
             }
         }
@@ -261,6 +265,8 @@ class hw8
         Console.WriteLine("Задача 54. Задать двумерный массив и отсортировать элементы каждой строки по убыванию.");
         double[,] arr = InputReal2DArray(Positive("Введите количество строк: "), Positive("Введите количество элементов в строке: "));
         SortByRows(ref arr);
+        Console.WriteLine("\nНажмите Enter, чтобы продолжить.");
+        Console.Read();
 
         /*Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
         Например, задан массив:
@@ -269,9 +275,12 @@ class hw8
         8 4 2 4
         5 2 6 7
         Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка*/
+        Console.Clear();
         Console.WriteLine("\nЗадача 56. Найти строку с наименьшей суммой элементов в двумерном массиве.");
         PrintMatrix("Используемый массив: ", arr);
         LeastSumRow(arr);
+        Console.WriteLine("\nНажмите Enter, чтобы продолжить.");
+        Console.Read();
 
         /*Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
         Например, даны 2 матрицы:
@@ -280,9 +289,12 @@ class hw8
         Результирующая матрица будет:
         18 20
         15 18*/
+        Console.Clear();
         Console.WriteLine("\nЗадача 58. Задать две матрицы и найти их произведение.");
         MatrixMultiplication(InputReal2DArray(Positive("Введите количество строк для матрицы А: "), Positive("Введите количество столбцов для матрицы A: ")),
                             InputReal2DArray(Positive("Введите количество строк для матрицы B: "), Positive("Введите количество столбцов для матрицы B: ")));
+        Console.WriteLine("\nНажмите Enter, чтобы продолжить.");
+        Console.Read();
 
         /*Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
         Массив размером 2 x 2 x 2
@@ -290,10 +302,13 @@ class hw8
         34(1,0,0) 41(1,1,0)
         27(0,0,1) 90(0,1,1)
         26(1,0,1) 55(1,1,1)*/
+        Console.Clear();
         Console.WriteLine("\nЗадача 60. Сформировать трёхмерных массив из неповторяющихся двузначных чисел \nи вывести этот массив построчно с указанием индексов элементов.");
         Print3DArrayByRows(Random3DArray(Positive("Введите размерность 1 трёхмерного массива: "),
-                                        Positive("Введите размерность 2 трёхмерного массива: "), 
+                                        Positive("Введите размерность 2 трёхмерного массива: "),
                                         Positive("Введите размерность 3 трёхмерного массива: ")));
+        Console.WriteLine("\nНажмите Enter, чтобы продолжить.");
+        Console.Read();
 
         /*Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
         Например, на выходе получается вот такой массив:
@@ -301,6 +316,7 @@ class hw8
         12 13 14 05
         11 16 15 06
         10 09 08 07*/
+        Console.Clear();
         Console.WriteLine("\nЗадача 62. Спирально заполнить массив 4х4.");
         Spiral2DArray();
     }
